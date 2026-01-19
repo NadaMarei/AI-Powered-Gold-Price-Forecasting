@@ -182,13 +182,39 @@ function updatePredictionDisplay(data) {
     dirEl.className = `prediction-direction ${data.direction}`;
     dirEl.innerHTML = `<i class="fas fa-arrow-${data.direction === 'up' ? 'trend-up' : 'trend-down'}"></i>`;
     
-    // Confidence - update both display elements
-    const confidence = data.confidence > 1 ? data.confidence : (data.confidence * 100);
+    // Price Change Display
+    const changeEl = document.getElementById('predictionChange');
+    if (changeEl) {
+        const isPositive = data.change >= 0;
+        const changeSign = isPositive ? '+' : '';
+        const arrowIcon = isPositive ? 'fa-caret-up' : 'fa-caret-down';
+        
+        changeEl.className = `prediction-change-display ${isPositive ? 'positive' : 'negative'}`;
+        changeEl.innerHTML = `
+            <span class="change-arrow"><i class="fas ${arrowIcon}"></i></span>
+            <span class="change-amount">${changeSign}$${Math.abs(data.change).toFixed(2)}</span>
+            <span class="change-percent">(${changeSign}${data.change_pct.toFixed(2)}%)</span>
+        `;
+    }
     
-    // Update confidence badge
-    const confNumber = document.getElementById('confidenceNumber');
-    if (confNumber) {
-        confNumber.textContent = confidence.toFixed(1);
+    // Confidence - Update ring animation
+    const confidence = data.confidence > 1 ? data.confidence : (data.confidence * 100);
+    document.getElementById('confidenceValue').textContent = `${confidence.toFixed(1)}%`;
+    
+    // Animate the confidence ring (circumference = 2 * π * 45 ≈ 283)
+    const circumference = 283;
+    const offset = circumference - (confidence / 100) * circumference;
+    const ringEl = document.getElementById('confidenceRing');
+    if (ringEl) {
+        ringEl.style.strokeDashoffset = offset;
+        // Set stroke color based on confidence level
+        if (confidence >= 95) {
+            ringEl.style.stroke = '#00d4aa'; // Green for high confidence
+        } else if (confidence >= 80) {
+            ringEl.style.stroke = '#ffd700'; // Gold for medium-high
+        } else {
+            ringEl.style.stroke = '#ff9500'; // Orange for lower
+        }
     }
     
     // Update multi-timeframe predictions

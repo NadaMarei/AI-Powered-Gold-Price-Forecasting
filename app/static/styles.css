@@ -373,91 +373,6 @@ body {
     color: var(--text-muted);
 }
 
-/* Prediction Display - Next Day Forecast */
-.card-prediction .prediction-display {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-lg);
-    padding: var(--space-lg);
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(184, 134, 11, 0.05) 100%);
-    border-radius: var(--radius-md);
-    margin-bottom: var(--space-lg);
-}
-
-.card-prediction .prediction-value {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.card-prediction .prediction-value .currency {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    margin-bottom: -5px;
-}
-
-.card-prediction .prediction-value #predictedPrice {
-    font-size: 2.5rem;
-    font-weight: 700;
-    font-family: 'JetBrains Mono', monospace;
-    background: var(--gradient-gold);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.2;
-}
-
-.card-prediction .prediction-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-top: var(--space-sm);
-    padding: 6px 14px;
-    background: var(--bg-tertiary);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 215, 0, 0.2);
-}
-
-.card-prediction .prediction-label i {
-    font-size: 0.65rem;
-    color: var(--gold-primary);
-}
-
-/* Confidence Badge */
-.prediction-confidence-badge {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-width: 80px;
-    padding: var(--space-md);
-    background: linear-gradient(135deg, rgba(0, 212, 170, 0.2) 0%, rgba(0, 168, 132, 0.1) 100%);
-    border-radius: var(--radius-md);
-    border: 1px solid rgba(0, 212, 170, 0.3);
-}
-
-.prediction-confidence-badge .confidence-number {
-    font-size: 1.5rem;
-    font-weight: 700;
-    font-family: 'JetBrains Mono', monospace;
-    color: var(--success);
-    line-height: 1;
-}
-
-.prediction-confidence-badge .confidence-text {
-    font-size: 0.6rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-top: 4px;
-}
-
 .price-change {
     display: flex;
     align-items: center;
@@ -497,56 +412,213 @@ body {
     font-weight: 500;
 }
 
-/* Prediction Card */
-.prediction-display {
+/* Prediction Card - Hero Section */
+.prediction-hero {
     display: flex;
     align-items: center;
-    gap: var(--space-lg);
-    margin-bottom: var(--space-lg);
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(184, 134, 11, 0.04) 100%);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 215, 0, 0.15);
 }
 
 .prediction-direction {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     flex-shrink: 0;
-    transition: var(--transition-smooth);
+    transition: all 0.4s ease;
 }
 
 .prediction-direction.up {
     background: linear-gradient(135deg, rgba(0, 212, 170, 0.25) 0%, rgba(0, 168, 132, 0.15) 100%);
     color: var(--success);
     border: 2px solid rgba(0, 212, 170, 0.4);
-    box-shadow: 0 0 25px rgba(0, 212, 170, 0.25);
-    animation: pulseGreen 2s ease-in-out infinite;
+    box-shadow: 0 0 15px rgba(0, 212, 170, 0.2);
+    animation: glow-up 2s ease-in-out infinite;
 }
 
 .prediction-direction.down {
     background: linear-gradient(135deg, rgba(255, 77, 106, 0.25) 0%, rgba(200, 60, 60, 0.15) 100%);
     color: var(--danger);
     border: 2px solid rgba(255, 77, 106, 0.4);
-    box-shadow: 0 0 25px rgba(255, 77, 106, 0.25);
-    animation: pulseRed 2s ease-in-out infinite;
+    box-shadow: 0 0 15px rgba(255, 77, 106, 0.2);
+    animation: glow-down 2s ease-in-out infinite;
 }
 
-@keyframes pulseGreen {
-    0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 170, 0.2); }
-    50% { box-shadow: 0 0 35px rgba(0, 212, 170, 0.4); }
+@keyframes glow-up {
+    0%, 100% { box-shadow: 0 0 10px rgba(0, 212, 170, 0.2); }
+    50% { box-shadow: 0 0 20px rgba(0, 212, 170, 0.4); }
 }
 
-@keyframes pulseRed {
-    0%, 100% { box-shadow: 0 0 20px rgba(255, 77, 106, 0.2); }
-    50% { box-shadow: 0 0 35px rgba(255, 77, 106, 0.4); }
+@keyframes glow-down {
+    0%, 100% { box-shadow: 0 0 10px rgba(255, 77, 106, 0.2); }
+    50% { box-shadow: 0 0 20px rgba(255, 77, 106, 0.4); }
 }
 
-.prediction-value span:last-child {
-    font-size: 2.5rem;
+.prediction-main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.prediction-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    margin-bottom: 4px;
+}
+
+.prediction-price-row .currency {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.predicted-price {
+    font-size: 1.8rem;
     font-weight: 700;
     font-family: 'JetBrains Mono', monospace;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+/* Prediction Change Display */
+.prediction-change-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.prediction-change-display.positive {
+    color: var(--success);
+}
+
+.prediction-change-display.negative {
+    color: var(--danger);
+}
+
+.prediction-change-display .change-arrow {
+    font-size: 0.85rem;
+}
+
+.prediction-change-display .change-amount {
+    font-weight: 700;
+}
+
+.prediction-change-display .change-percent {
+    opacity: 0.8;
+    font-size: 0.75rem;
+}
+
+.prediction-label-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.prediction-label-badge i {
+    color: var(--gold-primary);
+    font-size: 0.55rem;
+}
+
+/* Confidence Ring */
+.prediction-confidence-ring {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+.prediction-confidence-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.prediction-confidence-ring .ring-bg {
+    fill: none;
+    stroke: var(--bg-tertiary);
+    stroke-width: 6;
+}
+
+.prediction-confidence-ring .ring-progress {
+    fill: none;
+    stroke: #ffd700;
+    stroke-width: 6;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.8s ease, stroke 0.5s ease;
+}
+
+.ring-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.confidence-percent {
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--gold-primary);
+    line-height: 1;
+}
+
+.confidence-label {
+    font-size: 0.45rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-top: 1px;
+}
+
+/* Responsive for prediction hero */
+@media (max-width: 576px) {
+    .prediction-hero {
+        flex-direction: column;
+        gap: var(--space-sm);
+        padding: var(--space-sm);
+    }
+    
+    .predicted-price {
+        font-size: 1.5rem;
+    }
+    
+    .prediction-confidence-ring {
+        width: 50px;
+        height: 50px;
+    }
 }
 
 .confidence-bar {

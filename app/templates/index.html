@@ -8,9 +8,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v=7">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v=11">
 </head>
 <body>
+    <!-- SVG Gradient Definitions -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#f5c542;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#b8860b;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+    </svg>
+
     <!-- Animated Background -->
     <div class="bg-animation">
         <div class="gradient-orb orb-1"></div>
@@ -96,18 +107,34 @@
                 </div>
                 <div class="card-body">
                     <!-- Primary Prediction - Next Day -->
-                    <div class="prediction-display">
+                    <div class="prediction-hero">
                         <div class="prediction-direction" id="predictionDirection">
                             <i class="fas fa-arrow-trend-up"></i>
                         </div>
-                        <div class="prediction-value">
-                            <span class="currency">$</span>
-                            <span id="predictedPrice">--</span>
-                            <span class="prediction-label"><i class="fas fa-clock"></i> Next Day Forecast</span>
+                        <div class="prediction-main-content">
+                            <div class="prediction-price-row">
+                                <span class="currency">$</span>
+                                <span id="predictedPrice" class="predicted-price">--</span>
+                            </div>
+                            <div class="prediction-change-display" id="predictionChange">
+                                <span class="change-arrow"><i class="fas fa-caret-up"></i></span>
+                                <span class="change-amount">$0.00</span>
+                                <span class="change-percent">(0.00%)</span>
+                            </div>
+                            <div class="prediction-label-badge">
+                                <i class="fas fa-calendar-day"></i>
+                                <span>Next Day Forecast</span>
+                            </div>
                         </div>
-                        <div class="prediction-confidence-badge" id="predictionBadge">
-                            <span class="confidence-number" id="confidenceNumber">--</span>
-                            <span class="confidence-text">% accurate</span>
+                        <div class="prediction-confidence-ring" id="predictionConfidenceRing">
+                            <svg viewBox="0 0 100 100">
+                                <circle class="ring-bg" cx="50" cy="50" r="45" fill="none" stroke="#1a1a25" stroke-width="6"></circle>
+                                <circle class="ring-progress" id="confidenceRing" cx="50" cy="50" r="45" fill="none" stroke="#ffd700" stroke-width="6" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="283"></circle>
+                            </svg>
+                            <div class="ring-content">
+                                <span id="confidenceValue" class="confidence-percent">--%</span>
+                                <span class="confidence-label">Conf</span>
+                            </div>
                         </div>
                     </div>
                     
@@ -142,7 +169,7 @@
             <div class="card card-metrics glass-card">
                 <div class="card-header">
                     <h3><i class="fas fa-chart-bar"></i> Model Performance</h3>
-                    <span class="badge badge-accuracy">99%+ Accuracy</span>
+                    <span class="badge badge-accuracy">90%+ Accuracy</span>
                 </div>
                 <div class="card-body">
                     <div class="metrics-grid">
@@ -332,6 +359,6 @@
         </footer>
     </main>
 
-    <script src="{{ url_for('static', filename='app.js') }}?v=7"></script>
+    <script src="{{ url_for('static', filename='app.js') }}?v=10"></script>
 </body>
 </html>
