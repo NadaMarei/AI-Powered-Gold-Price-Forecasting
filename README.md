@@ -5,13 +5,26 @@
 [![Flask](https://img.shields.io/badge/Flask-3.0+-green.svg)](https://flask.palletsprojects.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Research](https://img.shields.io/badge/Research-Publication%20Grade-purple.svg)]()
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Online-success.svg)](https://ai-powered-gold-price-forecasting.onrender.com)
 
 A publication-grade deep learning framework for gold price forecasting featuring a novel Volatility-Adaptive GRU architecture, comprehensive Explainable AI (XAI) analysis, and a professional real-time web dashboard with AI-powered trading recommendations.
+
+## 🌐 Live Demo
+
+**🚀 Try the live application:** [https://ai-powered-gold-price-forecasting.onrender.com](https://ai-powered-gold-price-forecasting.onrender.com)
+
+Experience the full functionality of GoldAI Pro:
+- Real-time gold price tracking
+- AI-powered price predictions (1-day, 3-month, 6-month, 1-year)
+- Intelligent trading recommendations (Buy/Sell/Hold)
+- Dynamic model performance metrics
+- Explainable AI insights
 
 ---
 
 ## 📋 Table of Contents
 
+- [Live Demo](#-live-demo)
 - [Overview](#-overview)
 - [Key Features](#-key-features)
 - [Scientific Contributions](#-scientific-contributions)
