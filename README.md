@@ -764,15 +764,6 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ---
 
-## 📧 Contact
-
-For questions, issues, or collaboration:
-
-- **GitHub Issues**: [Create an issue](https://github.com/your-username/gold-forecasting/issues)
-- **Email**: [your.email@example.com]
-
----
-
 <p align="center">
   <strong>⭐ Star this repository if you find it useful for your research! ⭐</strong>
 </p>
