@@ -1,0 +1,92 @@
+2026-01-19 02:14:57,479 - src.utils.reproducibility - INFO - Saved experiment config to results\gold_forecasting_20260119_021455_e7487349d507
+2026-01-19 02:14:57,480 - __main__ - INFO - ================================================================================
+2026-01-19 02:14:57,480 - __main__ - INFO - GOLD PRICE FORECASTING EXPERIMENT
+2026-01-19 02:14:57,480 - __main__ - INFO - ================================================================================
+2026-01-19 02:14:57,481 - __main__ - INFO - Configuration: config/default_config.yaml
+2026-01-19 02:14:57,481 - __main__ - INFO - Seeds: [42, 123, 456, 789, 1011]
+2026-01-19 02:14:57,481 - __main__ - INFO - Output: results\gold_forecasting_20260119_021455_e7487349d507
+2026-01-19 02:14:57,481 - __main__ - INFO - Using device: cpu
+2026-01-19 02:14:57,481 - __main__ - INFO - Loading and preprocessing data...
+2026-01-19 02:14:57,481 - src.data.loader - INFO - Fetching data for GC=F from 2010-01-01 to 2024-12-31
+2026-01-19 02:15:02,546 - src.data.loader - INFO - Successfully loaded 3770 records
+2026-01-19 02:15:03,301 - src.data.preprocessing - INFO - Dropped 363 rows with NaN values after feature engineering
+2026-01-19 02:17:31,733 - src.utils.reproducibility - INFO - Saved experiment config to results\gold_forecasting_20260119_021729_e7487349d507
+2026-01-19 02:17:31,735 - __main__ - INFO - ================================================================================
+2026-01-19 02:17:31,735 - __main__ - INFO - GOLD PRICE FORECASTING EXPERIMENT
+2026-01-19 02:17:31,735 - __main__ - INFO - ================================================================================
+2026-01-19 02:17:31,735 - __main__ - INFO - Configuration: config/default_config.yaml
+2026-01-19 02:17:31,735 - __main__ - INFO - Seeds: [42]
+2026-01-19 02:17:31,736 - __main__ - INFO - Output: results\gold_forecasting_20260119_021729_e7487349d507
+2026-01-19 02:17:31,736 - __main__ - INFO - Using device: cpu
+2026-01-19 02:17:31,736 - __main__ - INFO - Loading and preprocessing data...
+2026-01-19 02:17:31,736 - src.data.loader - INFO - Fetching data for GC=F from 2010-01-01 to 2024-12-31
+2026-01-19 02:17:33,000 - src.data.loader - INFO - Successfully loaded 3770 records
+2026-01-19 02:17:35,038 - src.data.preprocessing - INFO - Dropped 270 rows with NaN values after feature engineering
+2026-01-19 02:17:35,565 - src.data.dataset - INFO - Data split - Train: 2450, Val: 349, Test: 701
+2026-01-19 02:17:35,570 - src.data.dataset - INFO - Created dataset with 2390 valid sequences
+2026-01-19 02:17:35,579 - src.data.dataset - INFO - Created dataset with 289 valid sequences
+2026-01-19 02:17:35,584 - src.data.dataset - INFO - Created dataset with 641 valid sequences
+2026-01-19 02:17:35,587 - __main__ - INFO - Data prepared: {'train_samples': 2390, 'val_samples': 289, 'test_samples': 641, 'train_date_range': (Timestamp('2010-10-18 00:00:00'), Timestamp('2020-10-13 00:00:00')), 'val_date_range': (Timestamp('2020-10-14 00:00:00'), Timestamp('2022-03-08 00:00:00')), 'test_date_range': (Timestamp('2022-03-09 00:00:00'), Timestamp('2024-12-30 00:00:00')), 'sequence_length': 60, 'forecast_horizon': 1, 'num_features': 76}
+2026-01-19 02:17:35,588 - __main__ - INFO - 
+========================================
+2026-01-19 02:17:35,588 - __main__ - INFO - Running with seed: 42
+2026-01-19 02:17:35,588 - __main__ - INFO - ========================================
+2026-01-19 02:17:35,588 - __main__ - INFO - Training Proposed GRU Model...
+2026-01-19 02:17:35,794 - src.utils.reproducibility - INFO - Set all random seeds to 42
+2026-01-19 02:18:10,642 - src.utils.reproducibility - INFO - Saved experiment config to results\gold_forecasting_20260119_021808_e7487349d507
+2026-01-19 02:18:10,644 - __main__ - INFO - ================================================================================
+2026-01-19 02:18:10,644 - __main__ - INFO - GOLD PRICE FORECASTING EXPERIMENT
+2026-01-19 02:18:10,644 - __main__ - INFO - ================================================================================
+2026-01-19 02:18:10,644 - __main__ - INFO - Configuration: config/default_config.yaml
+2026-01-19 02:18:10,645 - __main__ - INFO - Seeds: [42]
+2026-01-19 02:18:10,645 - __main__ - INFO - Output: results\gold_forecasting_20260119_021808_e7487349d507
+2026-01-19 02:18:10,646 - __main__ - INFO - Using device: cpu
+2026-01-19 02:18:10,646 - __main__ - INFO - Loading and preprocessing data...
+2026-01-19 02:18:10,646 - src.data.loader - INFO - Fetching data for GC=F from 2010-01-01 to 2024-12-31
+2026-01-19 02:18:12,334 - src.data.loader - INFO - Successfully loaded 3770 records
+2026-01-19 02:18:14,118 - src.data.preprocessing - INFO - Dropped 270 rows with NaN values after feature engineering
+2026-01-19 02:18:14,556 - src.data.dataset - INFO - Data split - Train: 2450, Val: 349, Test: 701
+2026-01-19 02:18:14,566 - src.data.dataset - INFO - Created dataset with 2390 valid sequences
+2026-01-19 02:18:14,572 - src.data.dataset - INFO - Created dataset with 289 valid sequences
+2026-01-19 02:18:14,580 - src.data.dataset - INFO - Created dataset with 641 valid sequences
+2026-01-19 02:18:14,583 - __main__ - INFO - Data prepared: {'train_samples': 2390, 'val_samples': 289, 'test_samples': 641, 'train_date_range': (Timestamp('2010-10-18 00:00:00'), Timestamp('2020-10-13 00:00:00')), 'val_date_range': (Timestamp('2020-10-14 00:00:00'), Timestamp('2022-03-08 00:00:00')), 'test_date_range': (Timestamp('2022-03-09 00:00:00'), Timestamp('2024-12-30 00:00:00')), 'sequence_length': 60, 'forecast_horizon': 1, 'num_features': 76}
+2026-01-19 02:18:14,584 - __main__ - INFO - 
+========================================
+2026-01-19 02:18:14,584 - __main__ - INFO - Running with seed: 42
+2026-01-19 02:18:14,584 - __main__ - INFO - ========================================
+2026-01-19 02:18:14,585 - __main__ - INFO - Training Proposed GRU Model...
+2026-01-19 02:18:14,598 - src.utils.reproducibility - INFO - Set all random seeds to 42
+2026-01-19 02:18:14,710 - __main__ - INFO - Model parameters: 1,126,717
+2026-01-19 02:18:14,711 - src.training.trainer - INFO - Using device: cpu
+2026-01-19 02:18:20,101 - src.training.optimizers - INFO - Created adamw optimizer with lr=0.001, weight_decay=0.0001, decay_params=35, no_decay_params=41
+2026-01-19 02:18:20,101 - src.training.optimizers - INFO - Created cosine scheduler with total_steps=14800, warmup_steps=740
+2026-01-19 02:18:23,591 - src.training.trainer - INFO - MLflow tracking enabled
+2026-01-19 02:18:23,591 - src.training.trainer - INFO - Starting training for 200 epochs
+2026-01-19 02:18:23,592 - src.training.trainer - INFO - Effective batch size: 128
+2026-01-19 02:19:31,880 - src.training.trainer - INFO - Epoch 0: Train Loss: 0.347020, Val Loss: 0.297507, Val MAE: 0.6791, Val RMSE: 0.6957, Dir Acc: 0.4931, Time: 67.8s
+2026-01-19 02:19:31,948 - src.training.trainer - INFO - Saved best model to checkpoints\best_model.pt
+2026-01-19 02:20:27,739 - src.training.trainer - INFO - Epoch 1: Train Loss: 0.344715, Val Loss: 0.300196, Val MAE: 0.6829, Val RMSE: 0.6996, Dir Acc: 0.5243, Time: 55.8s
+2026-01-19 02:21:26,025 - src.training.trainer - INFO - Epoch 2: Train Loss: 0.334820, Val Loss: 0.318697, Val MAE: 0.7082, Val RMSE: 0.7258, Dir Acc: 0.5382, Time: 58.3s
+2026-01-19 02:22:49,162 - src.training.trainer - INFO - Epoch 3: Train Loss: 0.280513, Val Loss: 0.284248, Val MAE: 0.6377, Val RMSE: 0.6790, Dir Acc: 0.5174, Time: 83.1s
+2026-01-19 02:22:49,209 - src.training.trainer - INFO - Saved best model to checkpoints\best_model.pt
+2026-01-19 02:23:56,043 - src.training.trainer - INFO - Epoch 4: Train Loss: 0.140598, Val Loss: 0.154609, Val MAE: 0.4095, Val RMSE: 0.4445, Dir Acc: 0.5625, Time: 66.8s
+2026-01-19 02:23:56,090 - src.training.trainer - INFO - Saved best model to checkpoints\best_model.pt
+2026-01-19 02:25:02,912 - src.training.trainer - INFO - Epoch 5: Train Loss: 0.087049, Val Loss: 0.099118, Val MAE: 0.2495, Val RMSE: 0.2941, Dir Acc: 0.5139, Time: 66.8s
+2026-01-19 02:25:02,962 - src.training.trainer - INFO - Saved best model to checkpoints\best_model.pt
+2026-01-19 02:26:10,862 - src.training.trainer - INFO - Epoch 6: Train Loss: 0.069094, Val Loss: 0.107727, Val MAE: 0.2752, Val RMSE: 0.3188, Dir Acc: 0.5174, Time: 67.9s
+2026-01-19 02:27:51,948 - src.training.trainer - INFO - Epoch 7: Train Loss: 0.061802, Val Loss: 0.112023, Val MAE: 0.2799, Val RMSE: 0.3361, Dir Acc: 0.5069, Time: 101.1s
+2026-01-19 02:29:08,548 - src.training.trainer - INFO - Epoch 8: Train Loss: 0.057286, Val Loss: 0.092994, Val MAE: 0.2222, Val RMSE: 0.2787, Dir Acc: 0.5104, Time: 76.6s
+2026-01-19 02:29:08,595 - src.training.trainer - INFO - Saved best model to checkpoints\best_model.pt
+2026-01-19 02:30:32,147 - src.training.trainer - INFO - Epoch 9: Train Loss: 0.055229, Val Loss: 0.096378, Val MAE: 0.2342, Val RMSE: 0.2870, Dir Acc: 0.5035, Time: 83.6s
+2026-01-19 02:31:48,047 - src.training.trainer - INFO - Epoch 10: Train Loss: 0.053951, Val Loss: 0.105214, Val MAE: 0.2706, Val RMSE: 0.3152, Dir Acc: 0.4861, Time: 75.9s
+2026-01-19 02:34:28,245 - src.training.trainer - INFO - Epoch 11: Train Loss: 0.055209, Val Loss: 0.111481, Val MAE: 0.2954, Val RMSE: 0.3345, Dir Acc: 0.4688, Time: 160.2s
+2026-01-19 02:37:11,129 - src.training.trainer - INFO - Epoch 12: Train Loss: 0.053518, Val Loss: 0.093662, Val MAE: 0.2381, Val RMSE: 0.2774, Dir Acc: 0.5000, Time: 162.9s
+2026-01-19 02:40:25,815 - src.training.trainer - INFO - Epoch 13: Train Loss: 0.052953, Val Loss: 0.100080, Val MAE: 0.2595, Val RMSE: 0.2985, Dir Acc: 0.5208, Time: 194.6s
+2026-01-19 02:44:40,842 - src.training.trainer - INFO - Epoch 14: Train Loss: 0.051877, Val Loss: 0.099735, Val MAE: 0.2538, Val RMSE: 0.3031, Dir Acc: 0.5174, Time: 254.3s
+2026-01-19 02:47:39,554 - src.training.trainer - INFO - Epoch 15: Train Loss: 0.051002, Val Loss: 0.099828, Val MAE: 0.2599, Val RMSE: 0.2988, Dir Acc: 0.5208, Time: 177.5s
+2026-01-19 02:52:10,246 - src.training.trainer - INFO - Epoch 16: Train Loss: 0.051681, Val Loss: 0.093081, Val MAE: 0.2302, Val RMSE: 0.2765, Dir Acc: 0.5417, Time: 267.9s
+2026-01-19 02:57:52,568 - src.training.trainer - INFO - Epoch 17: Train Loss: 0.052615, Val Loss: 0.072007, Val MAE: 0.1472, Val RMSE: 0.1997, Dir Acc: 0.5243, Time: 342.0s
+2026-01-19 02:57:52,947 - src.training.trainer - INFO - Saved best model to checkpoints\best_model.pt
+2026-01-19 03:00:49,489 - src.training.trainer - INFO - Epoch 18: Train Loss: 0.052880, Val Loss: 0.082894, Val MAE: 0.1903, Val RMSE: 0.2398, Dir Acc: 0.5486, Time: 176.5s
+2026-01-19 03:06:45,321 - src.training.trainer - INFO - Epoch 19: Train Loss: 0.051029, Val Loss: 0.088832, Val MAE: 0.2242, Val RMSE: 0.2634, Dir Acc: 0.5278, Time: 355.8s
+2026-01-19 03:09:13,468 - src.training.trainer - INFO - Epoch 20: Train Loss: 0.049673, Val Loss: 0.091473, Val MAE: 0.2256, Val RMSE: 0.2681, Dir Acc: 0.5278, Time: 148.1s

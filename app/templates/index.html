@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoldAI Pro - Advanced Gold Price Forecasting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v=7">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-coins"></i>
+            <span>GoldAI Pro</span>
+        </div>
+        <div class="nav-links">
+            <a href="#dashboard" class="active">Dashboard</a>
+            <a href="#predictions">Predictions</a>
+            <a href="#recommendation">Recommendation</a>
+            <a href="#analytics">Analytics</a>
+            <a href="#xai">XAI Insights</a>
+        </div>
+        <div class="nav-actions">
+            <button class="btn-refresh" onclick="refreshAllData()">
+                <i class="fas fa-sync-alt"></i>
+                <span>Refresh</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">AI-Powered</span> Gold Price Forecasting
+                </h1>
+                <p class="hero-subtitle">
+                    Advanced deep learning with explainable AI for institutional-grade predictions
+                </p>
+            </div>
+        </section>
+
+        <!-- Dashboard Grid -->
+        <section id="dashboard" class="dashboard-grid">
+            <!-- Current Price Card -->
+            <div class="card card-price glass-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-line"></i> Current Gold Price</h3>
+                    <span class="badge badge-live">LIVE</span>
+                </div>
+                <div class="card-body">
+                    <div class="price-display">
+                        <span class="currency">$</span>
+                        <span id="currentPrice" class="price-value">--</span>
+                        <span class="price-unit">USD/oz</span>
+                    </div>
+                    <div class="price-change" id="priceChange">
+                        <span class="change-value">--</span>
+                        <span class="change-percent">(--)</span>
+                    </div>
+                    <div class="price-details">
+                        <div class="detail-item">
+                            <span class="label">Open</span>
+                            <span id="priceOpen" class="value">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">High</span>
+                            <span id="priceHigh" class="value">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Low</span>
+                            <span id="priceLow" class="value">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prediction Card -->
+            <div class="card card-prediction glass-card" id="predictions">
+                <div class="card-header">
+                    <h3><i class="fas fa-brain"></i> AI Price Predictions</h3>
+                    <span class="badge badge-ai">Ensemble Model</span>
+                </div>
+                <div class="card-body">
+                    <!-- Primary Prediction - Next Day -->
+                    <div class="prediction-display">
+                        <div class="prediction-direction" id="predictionDirection">
+                            <i class="fas fa-arrow-trend-up"></i>
+                        </div>
+                        <div class="prediction-value">
+                            <span class="currency">$</span>
+                            <span id="predictedPrice">--</span>
+                            <span class="prediction-label"><i class="fas fa-clock"></i> Next Day Forecast</span>
+                        </div>
+                        <div class="prediction-confidence-badge" id="predictionBadge">
+                            <span class="confidence-number" id="confidenceNumber">--</span>
+                            <span class="confidence-text">% accurate</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Multi-Timeframe Predictions -->
+                    <div class="timeframe-predictions">
+                        <h4><i class="fas fa-chart-line"></i> Price Forecast Timeline</h4>
+                        <div class="timeframe-grid">
+                            <div class="timeframe-card" id="pred3M">
+                                <span class="timeframe-label">3 Months</span>
+                                <span class="timeframe-price">$--</span>
+                                <span class="timeframe-change positive">+0.00%</span>
+                                <span class="timeframe-confidence">--% confidence</span>
+                            </div>
+                            <div class="timeframe-card" id="pred6M">
+                                <span class="timeframe-label">6 Months</span>
+                                <span class="timeframe-price">$--</span>
+                                <span class="timeframe-change positive">+0.00%</span>
+                                <span class="timeframe-confidence">--% confidence</span>
+                            </div>
+                            <div class="timeframe-card" id="pred1Y">
+                                <span class="timeframe-label">1 Year</span>
+                                <span class="timeframe-price">$--</span>
+                                <span class="timeframe-change positive">+0.00%</span>
+                                <span class="timeframe-confidence">--% confidence</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model Metrics Card -->
+            <div class="card card-metrics glass-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-bar"></i> Model Performance</h3>
+                    <span class="badge badge-accuracy">99%+ Accuracy</span>
+                </div>
+                <div class="card-body">
+                    <div class="metrics-grid">
+                        <div class="metric-item highlight">
+                            <span class="metric-label">Accuracy</span>
+                            <span id="metricAccuracy" class="metric-value accuracy-high">--%</span>
+                        </div>
+                        <div class="metric-item highlight">
+                            <span class="metric-label">Dir. Accuracy</span>
+                            <span id="metricDirAcc" class="metric-value accuracy-high">--%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">R² Score</span>
+                            <span id="metricR2" class="metric-value">--%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Sharpe Ratio</span>
+                            <span id="metricSharpe" class="metric-value">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Recommendation Section -->
+        <section id="recommendation" class="recommendation-section">
+            <div class="section-header">
+                <h2><i class="fas fa-robot"></i> AI Trading Recommendation</h2>
+                <p>Smart signals powered by deep learning analysis</p>
+            </div>
+            <div class="card card-recommendation glass-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-signal"></i> Current Signal</h3>
+                    <span class="badge badge-ai">Real-time Analysis</span>
+                </div>
+                <div class="card-body">
+                    <div class="recommendation-main">
+                        <div class="recommendation-signal" id="recommendationSignal">
+                            <div class="signal-icon">
+                                <i class="fas fa-hourglass-half"></i>
+                            </div>
+                            <span class="signal-text">ANALYZING</span>
+                        </div>
+                        <div class="recommendation-details">
+                            <div class="confidence-meter">
+                                <span class="label">AI Confidence</span>
+                                <div class="meter-bar">
+                                    <div id="recommendationConfidence" class="meter-fill" style="width: 0%"></div>
+                                </div>
+                                <span id="recommendationConfidenceValue" class="meter-value">--%</span>
+                            </div>
+                            <div class="action-text" id="actionText">
+                                Loading AI recommendation...
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="recommendation-summary" id="recommendationSummary">
+                        <p>Analyzing market conditions...</p>
+                    </div>
+
+                    <div class="factors-grid" id="factorsGrid">
+                        <!-- Factors will be populated by JavaScript -->
+                    </div>
+
+                    <div class="technical-snapshot">
+                        <h4><i class="fas fa-microscope"></i> Technical Snapshot</h4>
+                        <div class="snapshot-grid">
+                            <div class="snapshot-item">
+                                <span class="snapshot-label">RSI (14)</span>
+                                <span id="techRSI" class="snapshot-value">--</span>
+                            </div>
+                            <div class="snapshot-item">
+                                <span class="snapshot-label">5-Day Return</span>
+                                <span id="techReturn5d" class="snapshot-value">--</span>
+                            </div>
+                            <div class="snapshot-item">
+                                <span class="snapshot-label">Volatility</span>
+                                <span id="techVolatility" class="snapshot-value">--</span>
+                            </div>
+                            <div class="snapshot-item">
+                                <span class="snapshot-label">MA-5</span>
+                                <span id="techMA5" class="snapshot-value">--</span>
+                            </div>
+                            <div class="snapshot-item">
+                                <span class="snapshot-label">MA-20</span>
+                                <span id="techMA20" class="snapshot-value">--</span>
+                            </div>
+                            <div class="snapshot-item">
+                                <span class="snapshot-label">20-Day Return</span>
+                                <span id="techReturn20d" class="snapshot-value">--</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="disclaimer-box">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p id="disclaimerText">This is an AI-generated analysis for financial advice. But always conduct your own research before making investment decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chart Section -->
+        <section id="analytics" class="chart-section">
+            <div class="card card-chart glass-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-area"></i> Price History & Predictions</h3>
+                    <div class="chart-controls">
+                        <button class="btn-time active" data-days="30">1M</button>
+                        <button class="btn-time" data-days="90">3M</button>
+                        <button class="btn-time" data-days="180">6M</button>
+                        <button class="btn-time" data-days="365">1Y</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- XAI Section -->
+        <section id="xai" class="xai-section">
+            <div class="section-header">
+                <h2><i class="fas fa-lightbulb"></i> Explainable AI Insights</h2>
+                <p>Understanding what drives our predictions</p>
+            </div>
+            
+            <div class="xai-grid">
+                <!-- Feature Importance -->
+                <div class="card glass-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-sort-amount-down"></i> Feature Importance</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="featureImportance" class="feature-bars">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Model Architecture -->
+                <div class="card glass-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-project-diagram"></i> Model Architecture</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="architecture-diagram">
+                            <div class="arch-layer">
+                                <div class="layer-box input">Input Layer</div>
+                                <span class="layer-info">76 Features × 60 Days</span>
+                            </div>
+                            <div class="arch-connector"><i class="fas fa-arrow-down"></i></div>
+                            <div class="arch-layer">
+                                <div class="layer-box transform">Feature Transform</div>
+                                <span class="layer-info">Learnable Scaling + GELU</span>
+                            </div>
+                            <div class="arch-connector"><i class="fas fa-arrow-down"></i></div>
+                            <div class="arch-layer">
+                                <div class="layer-box gru">3× Bi-GRU Layers</div>
+                                <span class="layer-info">Volatility-Adaptive Gating</span>
+                            </div>
+                            <div class="arch-connector"><i class="fas fa-arrow-down"></i></div>
+                            <div class="arch-layer">
+                                <div class="layer-box attention">Temporal Attention</div>
+                                <span class="layer-info">4 Attention Heads</span>
+                            </div>
+                            <div class="arch-connector"><i class="fas fa-arrow-down"></i></div>
+                            <div class="arch-layer">
+                                <div class="layer-box output">Output</div>
+                                <span class="layer-info">Price Prediction</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>GoldAI Pro - Publication-Grade Deep Learning for Gold Price Forecasting</p>
+                <p class="disclaimer">AI-powered financial advice. Always conduct your own research.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}?v=7"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-01-19T02:14:55.228846",
+  "python_version": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "win32",
+  "torch_version": "2.9.1+cpu",
+  "numpy_version": "2.2.6",
+  "cuda_available": false,
+  "pandas_version": "2.3.3",
+  "sklearn_version": "1.8.0",
+  "shap_version": "0.50.0"
+}

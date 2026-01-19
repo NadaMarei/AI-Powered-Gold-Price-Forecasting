@@ -1,0 +1,124 @@
+# =============================================================================
+# Gold Price Forecasting - Default Configuration
+# Publication-Grade Deep Learning Model
+# =============================================================================
+
+# Data Configuration
+data:
+  ticker: "GC=F"  # Gold Futures
+  start_date: "2010-01-01"
+  end_date: "2024-12-31"
+  sequence_length: 60  # Trading days lookback
+  forecast_horizon: 1  # Days ahead to predict
+  train_ratio: 0.7
+  val_ratio: 0.1
+  test_ratio: 0.2
+  features:
+    - Close
+    - Open
+    - High
+    - Low
+    - Volume
+    - Returns
+    - Volatility_20
+    - MA_10
+    - MA_50
+    - RSI_14
+    - MACD
+    - BB_Upper
+    - BB_Lower
+
+# Model Architecture
+model:
+  gru:
+    hidden_size: 128
+    num_layers: 3
+    bidirectional: true
+    recurrent_dropout: 0.2
+    use_attention: true
+    attention_heads: 4
+    use_skip_connections: true
+    use_volatility_gating: true
+    feature_transform_layers: true
+  
+  lstm_baseline:
+    hidden_size: 128
+    num_layers: 3
+    dropout: 0.2
+
+# Training Configuration
+training:
+  epochs: 200
+  batch_size: 32
+  gradient_accumulation_steps: 4  # Effective batch size = 128
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  optimizer: "adamw"
+  scheduler: "cosine"
+  warmup_epochs: 10
+  early_stopping:
+    patience: 20
+    min_delta: 0.0001
+  loss:
+    type: "huber_directional"
+    huber_delta: 1.0
+    directional_weight: 0.1
+  regularization:
+    variational_dropout: true
+    weight_constraint: 3.0
+    gradient_clip: 1.0
+
+# Benchmark Models
+benchmarks:
+  sarima:
+    auto_select: true
+    seasonal_period: 5  # Trading week
+    max_p: 5
+    max_d: 2
+    max_q: 5
+  
+  gradient_boosting:
+    n_estimators: 500
+    max_depth: 6
+    learning_rate: 0.05
+    subsample: 0.8
+
+# XAI Configuration
+xai:
+  shap:
+    background_samples: 100
+    test_samples: 50
+    batch_size: 10
+  stability:
+    perturbation_std: 0.01
+    n_perturbations: 20
+  counterfactual:
+    n_scenarios: 5
+    feature_ranges:
+      Returns: [-0.05, 0.05]
+      Volatility_20: [0.5, 2.0]
+
+# Evaluation Configuration
+evaluation:
+  bootstrap_samples: 1000
+  confidence_level: 0.95
+  random_seeds: [42, 123, 456, 789, 1011]
+  
+  trading_backtest:
+    initial_capital: 100000
+    transaction_cost: 0.001
+    position_size: 0.1
+
+# Experiment Tracking
+experiment:
+  name: "gold_price_forecasting"
+  tracking_uri: "mlruns"
+  log_artifacts: true
+  log_model: true
+
+# System
+system:
+  device: "auto"  # auto, cpu, cuda
+  num_workers: 4
+  seed: 42
+  deterministic: true
