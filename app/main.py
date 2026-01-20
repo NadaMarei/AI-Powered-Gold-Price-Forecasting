@@ -171,6 +171,35 @@ def get_historical():
         return jsonify({'success': False, 'error': str(e)})
 
 
+@app.route('/api/refresh-data', methods=['GET', 'POST'])
+def refresh_data():
+    """Force refresh of latest market data and clear prediction cache."""
+    global predictions_cache
+    try:
+        # Re-fetch latest gold data
+        fetch_latest_gold_data()
+
+        # Clear any cached predictions so subsequent calls recompute
+        predictions_cache = {}
+
+        if latest_data is not None and len(latest_data) > 0:
+            last_date = str(latest_data.index[-1].date())
+            return jsonify({
+                'success': True,
+                'message': 'Data refreshed successfully',
+                'last_date': last_date,
+                'rows': int(len(latest_data))
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'message': 'Tried to refresh but no data is available'
+            })
+    except Exception as e:
+        logger.error(f"Error refreshing data: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+
 @app.route('/api/predict')
 def get_prediction():
     """Get model prediction using advanced ensemble method for multiple timeframes."""
